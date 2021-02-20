@@ -1,4 +1,4 @@
 export function esquioRestRequest() {
-  fetch('', {headers: {}})
+  fetch('http://orf.at', {headers: {}})
     .then(result => console.log(result.json()));
 }
