@@ -1,4 +1,9 @@
-export function esquioRestRequest() {
-  fetch('http://orf.at', {headers: {}})
-    .then(result => console.log(result.json()));
+import 'isomorphic-fetch';
+
+export class RestRequest {
+  esquioRestRequest() {
+    return fetch('http://orf.at', {headers: {}})
+      .then(result => result.text());
+  }
 }
+
