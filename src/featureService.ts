@@ -11,21 +11,21 @@ export class FeatureService {
       return false;
     }
     return feature.Toggles
-      ? feature.Toggles.reduce((p, c) => p && (!c.Type || this.checkToggle(c)), true)
+      ? feature.Toggles.reduce((p, c) => p && this.checkToggle(c), true)
       : true;
   }
 
-  private checkToggle(c: Toggle) {
-    if (!c.Type) {
+  private checkToggle(toggle: Toggle) {
+    if (!toggle.Type) {
       return true;
     }
-    const featureToggle = this.toggles[c.Type];
+    const featureToggle = this.toggles[toggle.Type];
     if (!featureToggle) {
-      console.warn(`FeatureToggle Type ${c.Type} not supported`);
+      console.warn(`FeatureToggle Type ${toggle.Type} not supported`);
       return false;
     }
 
-    return featureToggle(c.Parameters);
+    return featureToggle(toggle.Parameters);
   }
 }
 
