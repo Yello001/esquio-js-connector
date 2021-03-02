@@ -1,19 +1,10 @@
-export interface Esquio {
-    Products: Product[] | null;
-}
-
-export interface Product {
-    Name: string | null;
-    Features: Feature[] | null;
-}
-
 export interface Feature {
-    Name: string | null;
-    Enabled: boolean;
-    Toggles: Toggle[] | null;
+    featureName: string;
+    enabled: boolean;
+    toggles: { [key: string]: ClaimToggle };
 }
 
-export interface Toggle {
-    Type: string | null;
-    Parameters: unknown;
+export interface ClaimToggle {
+    ClaimType: string | null;
+    ClaimValues: string | null;
 }
