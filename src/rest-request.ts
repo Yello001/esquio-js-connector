@@ -7,8 +7,8 @@ export interface IRequestAdapter {
 
 export class RestRequest implements IRequestAdapter {
   request(flag: string): Promise<Feature> {
-    return fetch('http://orf.at', {headers: {}})
+    return fetch('http://orf.at', {headers: {  'X-API-KEY': '[Key]'}})
       .then(result => result.text())
-      .then(() => ({Enabled: true, Name: flag, Toggles: [{Type: 'test', Parameters: null}]}))
+      .then(x => ({Enabled: true, Name: flag, Toggles: [{Type: 'test', Parameters: x}]}))
   }
 }
