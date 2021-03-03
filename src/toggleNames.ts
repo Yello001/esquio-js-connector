@@ -1,1 +1,1 @@
-export type ToggleNames = 'Esquio.AspNetCore.Toggles.ClaimValueToggle,Esquio.AspNetCore' | 'Test';
+export type ToggleNames = 'Esquio.AspNetCore.Toggles.ClaimValueToggle,Esquio.AspNetCore' | 'testToggle';
