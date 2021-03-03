@@ -23,8 +23,8 @@ describe('FeatureService', () => {
       });
     });
 
-    const validToggle = { 'testToggle': { ClaimType: null, ClaimValues: null } };
-    const invalidToggle = { 'notFoundToggle': { ClaimType: null, ClaimValues: null } };
+    const validToggle: { [key: string]: ClaimToggle } = { 'testToggle': { ClaimType: '', ClaimValues: null } };
+    const invalidToggle: { [key: string]: ClaimToggle } = { 'notFoundToggle': { ClaimType: '', ClaimValues: null } };
     const toggleParams: { toggles: { [key: string]: ClaimToggle }; result: boolean }[] =
       [
         { toggles: {}, result: true },

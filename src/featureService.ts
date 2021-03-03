@@ -1,8 +1,9 @@
 import { ClaimToggle } from './esquio.model';
 import { IRequestAdapter } from './rest-request';
+import { ToggleNames } from './toggleNames';
 
 export class FeatureService {
-  constructor(private request: IRequestAdapter, private toggles: { [id: string]: FeatureToggle } = {}) {
+  constructor(private request: IRequestAdapter, private toggles: { [id in ToggleNames]?: FeatureToggle } = {}) {
   }
 
   async isFeatureEnabled(name: string) {
@@ -11,11 +12,11 @@ export class FeatureService {
       return false;
     }
     return feature.toggles
-      ? Object.keys(feature.toggles).reduce((p, c) => p && this.checkToggle(c, feature.toggles[c]), true)
+      ? Object.keys(feature.toggles).reduce((p, c) => p && this.checkToggle(c as ToggleNames, feature.toggles[c]), true)
       : true;
   }
 
-  private checkToggle(name: string, toggle: ClaimToggle) {
+  private checkToggle(name: ToggleNames, toggle: ClaimToggle) {
     const featureToggle = this.toggles[name];
     if (!featureToggle) {
       console.warn(`FeatureToggle Type ${name} not supported`);
@@ -26,5 +27,5 @@ export class FeatureService {
   }
 }
 
-type FeatureToggle = (parameters: unknown) => boolean;
+export type FeatureToggle = (claimValueToggle: ClaimToggle) => boolean;
 

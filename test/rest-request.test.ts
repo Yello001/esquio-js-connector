@@ -11,7 +11,7 @@ function mockApiResponse(body = {}) {
 }
 
 describe('Rest API Request', () => {
-  it('should be called', async () => {
+  it('should return request result', async () => {
 
     const requestResult = {
       enabled: true,

@@ -5,6 +5,6 @@ export interface Feature {
 }
 
 export interface ClaimToggle {
-    ClaimType: string | null;
+    ClaimType: string;
     ClaimValues: string | null;
 }

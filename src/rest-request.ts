@@ -6,7 +6,7 @@ export interface IRequestAdapter {
 }
 
 export class RestRequest implements IRequestAdapter {
-  constructor(private url: string, private apiKey: string, private product: string, private deployment: string) {
+  constructor(private url: string, private apiKey: string, private product: string, private deployment?: string) {
   }
 
   request(flag: string): Promise<Feature> {
