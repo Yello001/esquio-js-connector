@@ -2,12 +2,12 @@
   "name": "esquio-js-connector",
   "version": "1.0.0",
   "description": "JS Connector for esquio",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": ["lib/**/*"],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist/**/*"],
   "scripts": {
     "test": "mocha -r ts-node/register test/**/*.test.ts",
-    "prebuild": "rimraf lib/",
+    "prebuild": "rimraf dist/",
     "build": "tsc",
     "prepare": "npm run build",
     "prepublishOnly" : "npm test"
