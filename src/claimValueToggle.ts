@@ -1,8 +1,6 @@
 import { FeatureToggle } from './featureService';
-import { ToggleNames } from './toggleNames';
 
-
-export const claimValueToggle: (token: { [id: string]: string }) => { [id in ToggleNames]?: FeatureToggle } = (token: { [id: string]: string }) => ({
+export const claimValueToggle: (token: { [id: string]: string }) => { [key: string]: FeatureToggle } = (token: { [id: string]: string }) => ({
   'Esquio.AspNetCore.Toggles.ClaimValueToggle,Esquio.AspNetCore': (claimValueToggle) => {
     if (!claimValueToggle.ClaimValues) {
       return true;

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { claimValueToggle } from '../src/claimValueToggle';
+import { claimValueToggle } from '../src';
 import { ClaimToggle } from '../src/esquio.model';
 
 describe('ClaimValueToggle', () => {
