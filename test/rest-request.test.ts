@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import 'isomorphic-fetch';
 import sinon from 'sinon';
-import { RestRequest } from '../src/rest-request';
+import { RestRequest } from '../src';
 
 function mockApiResponse(body = {}) {
   return new Response(JSON.stringify(body), {
@@ -25,7 +25,8 @@ describe('Rest API Request', () => {
     };
     sinon.stub(global, 'fetch').returns(Promise.resolve(mockApiResponse(requestResult)));
 
-    const request = new RestRequest('http://test.org', 'apiKey', 'product', 'deployment');
+    const request = new RestRequest(
+      { url: 'http://test.org', apiKey: 'apiKey', product: 'product', deployment: 'deployment' });
     const result = await request.request('feature');
     expect(result).to.eql(requestResult);
   });

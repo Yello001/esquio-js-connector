@@ -10,7 +10,8 @@
     "prebuild": "rimraf dist/",
     "build": "tsc",
     "prepare": "npm run build",
-    "prepublishOnly" : "npm test"
+    "prepublishOnly": "npm test",
+    "version": "git add -A src"
   },
   "repository": {
     "type": "git",

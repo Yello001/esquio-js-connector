@@ -1,10 +1,9 @@
-import { claimValueToggle } from './claimValueToggle';
 import { ClaimToggle } from './esquio.model';
 import { IRequestAdapter } from './rest-request';
 
 export class FeatureService {
   constructor(private request: IRequestAdapter,
-              private toggles: { [key: string]: FeatureToggle } = { ...claimValueToggle }) {
+              private toggles: { [key: string]: FeatureToggle } = {}) {
   }
 
   async isFeatureEnabled(name: string) {
