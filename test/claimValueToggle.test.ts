@@ -1,12 +1,11 @@
 import { expect } from 'chai';
-import { claimValueToggle } from '../src';
+import { claimValueToggle, Token } from '../src';
 import { ClaimToggle } from '../src/esquio.model';
 
 describe('ClaimValueToggle', () => {
-
   const testParams: {
     text: string;
-    input: { claimToggle: ClaimToggle; token: { [id: string]: string } };
+    input: { claimToggle: ClaimToggle; token: Token };
     result: boolean
   }[] = [
     {
@@ -20,6 +19,16 @@ describe('ClaimValueToggle', () => {
       result: true
     },
     {
+      text: 'should return true when required Claim is in Token array',
+      input: { token: { Roles: ['Guest', 'Admin'] }, claimToggle: { ClaimType: 'Roles', ClaimValues: 'Admin' } },
+      result: true
+    },
+    {
+      text: 'should return false when required Claim is not in Token array',
+      input: { token: { Roles: ['Guest', 'Admin'] }, claimToggle: { ClaimType: 'Roles', ClaimValues: 'SuperUser' } },
+      result: false
+    },
+    {
       text: 'should return true when one required Claim is in Token',
       input: { token: { Role: 'Admin' }, claimToggle: { ClaimType: 'Role', ClaimValues: 'User;Admin' } },
       result: true
@@ -29,7 +38,7 @@ describe('ClaimValueToggle', () => {
       input: { token: { Role: 'Guest' }, claimToggle: { ClaimType: 'Role', ClaimValues: 'User;Admin' } },
       result: false
     }
-    ];
+  ];
 
   testParams.forEach(testParam => {
     it(testParam.text, () => {
@@ -40,5 +49,4 @@ describe('ClaimValueToggle', () => {
       expect(result).to.equal(testParam.result);
     });
   })
-
 });
